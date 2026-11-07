@@ -1,0 +1,90 @@
+/* ==========================================================================
+   L'eau Academy — ANIMATIONS (keyframes + SVG swimmer animations)
+   ========================================================================== */
+@keyframes kenburns { from { transform: scale(1.08) translate3d(0, 0, 0); } to { transform: scale(1.18) translate3d(-1.5%, -1%, 0); } }
+@keyframes cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(16px); opacity: 0; } 100% { opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes ping { 0% { transform: scale(1); opacity: .7; } 80%, 100% { transform: scale(1.7); opacity: 0; } }
+@keyframes lensOpen { 0% { clip-path: circle(0% at 50% 50%); transform: scale(.7); } 60% { clip-path: circle(50% at 50% 50%); } 100% { clip-path: circle(50% at 50% 50%); transform: scale(1); } }
+@keyframes shine { to { transform: translateX(120%); } }
+@keyframes ripplewipe { 0% { opacity: 1; -webkit-mask-size: 0 0; } 100% { opacity: 0; } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-200px); } }
+@keyframes driftR { from { transform: translateX(-200px); } to { transform: translateX(0); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes bobSlow { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-9px) rotate(-1.5deg); } }
+@keyframes spinCW { to { transform: rotate(360deg); } }
+@keyframes spinCCW { to { transform: rotate(-360deg); } }
+@keyframes kickA { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+@keyframes kickB { 0%, 100% { transform: rotate(16deg); } 50% { transform: rotate(-16deg); } }
+@keyframes waveA { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+@keyframes waveB { 0%, 100% { transform: rotate(16deg); } 50% { transform: rotate(-16deg); } }
+@keyframes bubbleUp { 0% { transform: translateY(0) scale(.6); opacity: 0; } 15% { opacity: .85; } 100% { transform: translateY(-190px) scale(1.1); opacity: 0; } }
+@keyframes shimmer { 0%, 100% { opacity: .25; } 50% { opacity: .6; } }
+@keyframes surfaceMove { from { transform: translateX(0); } to { transform: translateX(-160px); } }
+@keyframes pullBreast { 0%, 100% { transform: rotate(0deg) scaleX(1); } 35% { transform: rotate(34deg) scaleX(.82); } 60% { transform: rotate(8deg) scaleX(.6); } }
+@keyframes thigh { 0%, 100% { transform: rotate(8deg); } 40% { transform: rotate(-38deg); } 70% { transform: rotate(6deg); } }
+@keyframes shank { 0%, 100% { transform: rotate(-4deg); } 40% { transform: rotate(78deg); } 70% { transform: rotate(-6deg); } }
+@keyframes headBreast { 0%, 100% { transform: translateY(2px); } 35% { transform: translateY(-16px); } 60% { transform: translateY(2px); } }
+@keyframes glide { 0%, 100% { transform: translateX(-14px); } 50% { transform: translateX(14px); } }
+@keyframes splash { 0%, 100% { transform: translateY(4px); } 45% { transform: translateY(-24px); } }
+@keyframes ring { 0% { r: 4; opacity: .9; } 100% { r: 54; opacity: 0; } }
+@keyframes breathe { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-26deg); } }
+
+/* ---------- Stroke scenes ---------- */
+.scene { width: 100%; height: 100%; }
+.scene .lanes { animation: drift 4.5s linear infinite; }
+.scene.reverse .lanes { animation-name: driftR; }
+.scene .surf { animation: surfaceMove 3.6s linear infinite; }
+.scene .caustic { animation: shimmer 3.4s ease-in-out infinite; }
+.scene .caustic:nth-child(2n) { animation-delay: -1.2s; }
+.scene .caustic:nth-child(3n) { animation-delay: -2.1s; }
+.scene .swimmer { animation: bobSlow 3.6s ease-in-out infinite; transform-origin: 400px 225px; }
+.scene .bubble { fill: none; stroke: rgba(255,255,255,.65); stroke-width: 1.5; animation: bubbleUp 3.8s ease-in infinite; animation-delay: var(--bd, 0s); }
+
+/* freestyle */
+.free .arm-a { transform-origin: 505px 226px; animation: spinCW 1.9s linear infinite; }
+.free .arm-b { transform-origin: 505px 226px; animation: spinCW 1.9s linear infinite; animation-delay: -.95s; }
+.free .leg-a { transform-origin: 330px 228px; animation: kickA .34s ease-in-out infinite; }
+.free .leg-b { transform-origin: 330px 228px; animation: kickB .34s ease-in-out infinite; }
+.free .head { animation: breathe 1.9s ease-in-out infinite; transform-origin: 530px 226px; }
+/* backstroke */
+.back .arm-a { transform-origin: 505px 226px; animation: spinCW 2.1s linear infinite; }
+.back .arm-b { transform-origin: 505px 226px; animation: spinCW 2.1s linear infinite; animation-delay: -1s; }
+.back .leg-a { transform-origin: 330px 226px; animation: kickA .38s ease-in-out infinite; }
+.back .leg-b { transform-origin: 330px 226px; animation: kickB .38s ease-in-out infinite; }
+/* butterfly */
+.fly .torso { transform-origin: 470px 226px; animation: waveA 1.5s ease-in-out infinite; }
+.fly .hips { transform-origin: 390px 226px; animation: waveB 1.5s ease-in-out infinite; animation-delay: -.2s; }
+.fly .arms { transform-origin: 505px 226px; animation: spinCW 1.5s linear infinite; }
+.fly .arms-b { transform-origin: 505px 226px; animation: spinCW 1.5s linear infinite; }
+.fly .tail { transform-origin: 330px 226px; animation: kickA .75s ease-in-out infinite; }
+/* breaststroke */
+.breast .arm-l, .breast .arm-r { transform-origin: 500px 228px; animation: pullBreast 2.4s ease-in-out infinite; }
+.breast .arm-r { animation-delay: -.08s; }
+.breast .thigh { transform-origin: 400px 230px; animation: thigh 2.4s ease-in-out infinite; }
+.breast .shank { transform-origin: 360px 234px; animation: shank 2.4s ease-in-out infinite; }
+.breast .head { animation: headBreast 2.4s ease-in-out infinite; }
+.breast .body-glide { animation: glide 2.4s ease-in-out infinite; }
+
+/* ---------- Kids technique illustrations ---------- */
+.tcard .lanes { animation: drift 7s linear infinite; }
+.tcard .bob { animation: bob 2.6s ease-in-out infinite; }
+.tcard .k-leg-a { transform-origin: 110px 105px; animation: kickA .5s ease-in-out infinite; }
+.tcard .k-leg-b { transform-origin: 110px 105px; animation: kickB .5s ease-in-out infinite; }
+.tcard .k-head { transform-origin: 232px 108px; animation: breathe 3s ease-in-out infinite; }
+.tcard .k-jump { animation: splash 2.4s ease-in-out infinite; }
+.tcard .ringA { fill: none; stroke: rgba(255,255,255,.6); stroke-width: 1.5; animation: ring 2.4s ease-out infinite; }
+.tcard .ringB { animation-delay: .8s; fill: none; stroke: rgba(255,255,255,.6); stroke-width: 1.5; animation: ring 2.4s .8s ease-out infinite; }
+.tcard .bubble { fill: none; stroke: rgba(255,255,255,.7); stroke-width: 1.5; animation: bubbleUp 3s ease-in infinite; animation-delay: var(--bd, 0s); }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  .hero__title .w > span { transform: none; }
+  .intro__lens { clip-path: none; transform: none; }
+  .tcard .k-jump, .scene .swimmer { animation: none; }
+}
+
+.strokes__stage.is-paused .scene * { animation-play-state: paused !important; }
